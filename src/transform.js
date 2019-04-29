@@ -37,5 +37,3 @@ export const createTransform = fn => (data, overwrite = false) => transform(data
 
 export const snake = createTransform(ccSnake)
 export const camel = createTransform(ccCamel)
-
-export default transform
