@@ -25,4 +25,4 @@ const applyConverters = axios => {
   return axios
 }
 
-export default applyConverters
+export default applyConverters;
