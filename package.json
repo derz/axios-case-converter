@@ -4,6 +4,7 @@
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"unpkg": "dist/index.umd.js",
+	"version": "3.1.0",
 	"scripts": {
 		"lint-src": "eslint src",
 		"lint-examples": "eslint examples",
