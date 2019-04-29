@@ -1,4 +1,4 @@
-import { snake, camel, header } from './transform'
+import { snake, camel } from './transform'
 
 export const snakeParams = config => {
   if (config.params) {
