@@ -1,16 +1,18 @@
 import { snake, camel } from './transform'
 
-export const snakeParams = config => {
+const snakeParams = config => {
   if (config.params) {
     config.params = snake(config.params)
   }
 
   return config
 }
-export const snakeRequest = (data, headers) => {
+
+const snakeRequest = (data, headers) => {
   return snake(data)
 }
-export const camelResponse = (data, headers) => {
+
+const camelResponse = (data, headers) => {
   return camel(data)
 }
 
