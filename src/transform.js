@@ -1,8 +1,8 @@
 import {
   camel as ccCamel,
-  snake as ccSnake,
-  header as ccHeader,
-} from 'change-case'
+  decamelizeKeys as ccSnake
+} from 'humps';
+
 import { isPlainObject, isURLSearchParams, isFormData } from './util'
 
 const transform = (data, fn, overwrite = false) => {
@@ -37,6 +37,5 @@ export const createTransform = fn => (data, overwrite = false) => transform(data
 
 export const snake = createTransform(ccSnake)
 export const camel = createTransform(ccCamel)
-export const header = createTransform(ccHeader)
 
 export default transform
