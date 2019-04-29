@@ -1,6 +1,6 @@
 import {
-  camel as ccCamel,
-  decamelizeKeys as ccSnake
+  camelizeKeys,
+  decamelizeKeys
 } from 'humps';
 
 import { isPlainObject, isURLSearchParams, isFormData } from './util'
@@ -12,12 +12,9 @@ const transform = (data, fn, overwrite = false) => {
 
   /* eslint-disable no-console */
   if (isFormData(data) && !data.entries) {
-    if (navigator.product === 'ReactNative') {
-      console.warn('Be careful that FormData cannot be transformed on React Native. If you intentionally implemented, ignore this kind of warning: https://facebook.github.io/react-native/docs/debugging.html')
-    } else {
-      console.warn('You must use polyfill of FormData.prototype.entries() on Internet Explorer or Safari: https://github.com/jimmywarting/FormData')
-    }
-    return data
+    console.warn('You must use polyfill of FormData.prototype.entries() on Internet Explorer or Safari: https://github.com/jimmywarting/FormData')
+
+    return data;
   }
   /* eslint-enable no-console */
 
@@ -35,5 +32,5 @@ const transform = (data, fn, overwrite = false) => {
 
 export const createTransform = fn => (data, overwrite = false) => transform(data, fn, overwrite)
 
-export const snake = createTransform(ccSnake)
-export const camel = createTransform(ccCamel)
+export const snake = createTransform(decamelizeKeys);
+export const camel = createTransform(camelizeKeys);
