@@ -1,0 +1,60 @@
+{
+  "name": "axios-case-converter",
+  "version": "0.3.0",
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
+  "source": "src/index.js",
+  "scripts": {
+    "lint-src": "eslint src",
+    "lint-examples": "eslint examples",
+    "test": "npm run lint-src && cross-env BABEL_ENV=cjs babel-node test/index.js | tap-spec",
+    "test-without-lint": "cross-env BABEL_ENV=cjs babel-node test/index.js | tap-spec",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir dist/lib",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir dist/es",
+    "build": "run-p build:*",
+    "prepublish": "in-publish && (git diff --no-ext-diff --quiet --exit-code src .gitignore package.json README.md LICENSE || (echo \"Please commit changes!\" && false)) && npm test && npm run build || not-in-publish"
+  },
+  "description": "Axios transformer/interceptor that converts snake_case/camelCase",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpyw/axios-interceptor-change-case.git"
+  },
+  "keywords": [
+    "axios",
+    "interceptor",
+    "snake",
+    "camel",
+    "case",
+    "convert"
+  ],
+  "author": "mpyw <ryosuke_i_628@yahoo.co.jp>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mpyw/axios-interceptor-change-case/issues"
+  },
+  "homepage": "https://github.com/mpyw/axios-interceptor-change-case#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "axios": "^0.18.0",
+    "axios-mock-adapter": "^1.9.0",
+    "babel-eslint": "^10.0.1",
+    "cross-env": "^5.0.5",
+    "eslint": "^5.7.0",
+    "eslint-plugin-react": "^7.3.0",
+    "in-publish": "^2.0.0",
+    "npm-run-all": "^4.1.1",
+    "redux": "^4.0.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.8.0",
+    "utils-copy-error": "^1.0.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0",
+    "humps": "^2.0.1"
+  }
+}
